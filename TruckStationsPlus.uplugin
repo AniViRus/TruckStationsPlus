@@ -1,0 +1,26 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0.0",
+	"FriendlyName": "Truck Stations Plus",
+	"Description": "Adds upgraded Truck Statoins which use energy from power grid as a fuel for vehicles.",
+	"Category": "Modding",
+	"CreatedBy": "",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Plugins": [
+		{
+			"Name": "SML",
+			"Enabled": true,
+			"SemVersion": "^3.10.0"
+		}
+	],
+	"SemVersion": "1.0.0",
+	"GameVersion": ">=383729"
+}
