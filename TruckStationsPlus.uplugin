@@ -1,9 +1,9 @@
 {
 	"FileVersion": 3,
-	"Version": 1,
-	"VersionName": "1.2.0",
+	"Version": 2,
+	"VersionName": "2.0.0",
 	"FriendlyName": "Truck Stations Plus",
-	"Description": "Adds upgraded Truck Statoins which use energy from power grid as a fuel for vehicles.",
+	"Description": "Adds Truck Chargers which make Truck Stations use energy from power grid as a fuel for vehicles.",
 	"Category": "Modding",
 	"CreatedBy": "AniViRus Productions",
 	"CreatedByURL": "",
@@ -18,9 +18,16 @@
 		{
 			"Name": "SML",
 			"Enabled": true,
-			"SemVersion": "^3.11.1"
+			"SemVersion": "^3.11.3"
 		}
 	],
-	"SemVersion": "1.2.0",
-	"GameVersion": ">=416835"
+	"SemVersion": "2.0.0",
+	"GameVersion": ">=416835",
+	"Modules": [
+		{
+			"Name": "TruckStationsPlus",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
 }
