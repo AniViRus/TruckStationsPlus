@@ -15,19 +15,16 @@ class TRUCKSTATIONSPLUS_API AAVRPBuildableTruckCharger : public AFGBuildableFact
 	GENERATED_BODY()
 public:
 	AAVRPBuildableTruckCharger();
-	// Begin AActor interface
-	virtual void BeginPlay() override;
-	// End AActor interface
 
 	//~ Begin FGBuildableFactory Interface
 	virtual bool CanProduce_Implementation() const override;
-	virtual void Factory_TickProducing(float dt) override;
+	virtual void Factory_Tick(float dt) override;
 	//~ End FGBuildableFactory Interface
 
 	UFUNCTION( BlueprintCallable, BlueprintPure )
 	FORCEINLINE AFGBuildableDockingStation* GetTruckStation() const { return truckStation; }
-	UFUNCTION(BlueprintCallable, BlueprintPure)
-	FORCEINLINE UFGInventoryComponent* GetFuelInventory() const { return mFuelInventory; }
+	//UFUNCTION(BlueprintCallable, BlueprintPure)
+	//FORCEINLINE UFGInventoryComponent* GetFuelInventory() const { return mFuelInventory; }
 	UFUNCTION()
 	FORCEINLINE void SetTruckStation(AFGBuildableDockingStation* newTruckStation) { truckStation = newTruckStation; }
 	UFUNCTION()
@@ -37,8 +34,8 @@ public:
 private:
 	UPROPERTY(SaveGame)
 	AFGBuildableDockingStation* truckStation;
-	UPROPERTY(EditAnywhere, SaveGame)
-	UFGInventoryComponent* mFuelInventory;
+	//UPROPERTY(EditAnywhere, SaveGame)
+	//UFGInventoryComponent* mFuelInventory;
 	UPROPERTY(EditAnywhere, SaveGame)
 	UFGFactoryConnectionComponent* fuelOutputConnection;
 };
