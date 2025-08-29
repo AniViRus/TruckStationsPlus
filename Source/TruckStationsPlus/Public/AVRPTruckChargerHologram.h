@@ -53,11 +53,14 @@ class TRUCKSTATIONSPLUS_API AAVRPTruckChargerHologram : public AFGBuildableHolog
 public:
 	AAVRPTruckChargerHologram();
 protected:
+	virtual bool IsValidHitResult(const FHitResult& hitResult) const override;
 	virtual bool TrySnapToActor(const FHitResult& hitResult) override;
 	virtual void ConfigureActor(class AFGBuildable* inBuildable) const override;
 	virtual void ConfigureComponents(class AFGBuildable* inBuildable) const override;
+	virtual void CheckValidPlacement() override;
 private:
 	UPROPERTY( Transient )
 	AFGBuildableDockingStation* Snapped = nullptr;
+	UPROPERTY(Transient)
 	UFGFactoryConnectionComponent* SnappedFactoryConnection = nullptr;
 };

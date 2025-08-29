@@ -1,18 +1,22 @@
 #include "AVRPBuildableTruckCharger.h"
 
-AAVRPBuildableTruckCharger::AAVRPBuildableTruckCharger()
+AAVRPBuildableTruckCharger::AAVRPBuildableTruckCharger() : Super()
 {
 	fuelOutputConnection = CreateDefaultSubobject<UFGFactoryConnectionComponent>(TEXT("OutputFuelConnection"));
+	mFuelInventory = CreateDefaultSubobject<UFGInventoryComponent>(TEXT("FuelInventory"));
 }
 
 void AAVRPBuildableTruckCharger::BeginPlay()
 {
 	Super::BeginPlay();
+	//GetFuelInventory()->Resize();
+	//fuelOutputConnection->SetInventory(GetFuelInventory());
+	//fuelOutputConnection->SetInventoryAccessIndex(0);
 }
 
 bool AAVRPBuildableTruckCharger::CanProduce_Implementation() const
 {
-	return IsValid(truckStation) && HasPower() && truckStation->GetFuelInventory()->HasEnoughSpaceForItem(FInventoryItem(mTruckPowerClass));
+	return IsValid(truckStation) && HasPower() && GetFuelInventory()->HasEnoughSpaceForItem(FInventoryItem(mTruckPowerClass));
 }
 
 void AAVRPBuildableTruckCharger::Factory_TickProducing(float dt)
@@ -21,5 +25,5 @@ void AAVRPBuildableTruckCharger::Factory_TickProducing(float dt)
 	if (not HasAuthority()) {
 		return;
 	}
-	truckStation->GetFuelInventory()->AddStack(FInventoryStack(1500 * dt, mTruckPowerClass), true);
+	GetFuelInventory()->AddStack(FInventoryStack(1500 * dt, mTruckPowerClass), true);
 }

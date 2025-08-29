@@ -26,16 +26,19 @@ public:
 
 	UFUNCTION( BlueprintCallable, BlueprintPure )
 	FORCEINLINE AFGBuildableDockingStation* GetTruckStation() const { return truckStation; }
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	FORCEINLINE UFGInventoryComponent* GetFuelInventory() const { return mFuelInventory; }
 	UFUNCTION()
 	FORCEINLINE void SetTruckStation(AFGBuildableDockingStation* newTruckStation) { truckStation = newTruckStation; }
 	UFUNCTION()
 	FORCEINLINE void ConnectWithStation(UFGFactoryConnectionComponent* stationConnection) { fuelOutputConnection->SetConnection(stationConnection); }
-
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame)
-	UFGFactoryConnectionComponent* fuelOutputConnection;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<class UFGItemDescriptor> mTruckPowerClass;
 private:
 	UPROPERTY(SaveGame)
 	AFGBuildableDockingStation* truckStation;
+	UPROPERTY(EditAnywhere, SaveGame)
+	UFGInventoryComponent* mFuelInventory;
+	UPROPERTY(EditAnywhere, SaveGame)
+	UFGFactoryConnectionComponent* fuelOutputConnection;
 };

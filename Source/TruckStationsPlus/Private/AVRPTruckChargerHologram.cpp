@@ -6,6 +6,11 @@ AAVRPTruckChargerHologram::AAVRPTruckChargerHologram() : Super() {
 
 }
 
+bool AAVRPTruckChargerHologram::IsValidHitResult(const FHitResult& hitResult) const
+{
+	return true;
+}
+
 bool AAVRPTruckChargerHologram::TrySnapToActor(const FHitResult& hitResult)
 {
 	const auto Actor = hitResult.GetActor();
@@ -44,9 +49,10 @@ void AAVRPTruckChargerHologram::ConfigureActor(AFGBuildable* inBuildable) const
 	Super::ConfigureActor(inBuildable);
 	Cast<AAVRPBuildableTruckCharger>(inBuildable)->SetTruckStation(Snapped);
 }
-
 void AAVRPTruckChargerHologram::ConfigureComponents(AFGBuildable* inBuildable) const
 {
 	Super::ConfigureComponents(inBuildable);
 	Cast<AAVRPBuildableTruckCharger>(inBuildable)->ConnectWithStation(SnappedFactoryConnection);
 }
+
+void AAVRPTruckChargerHologram::CheckValidPlacement(){}
